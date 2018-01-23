@@ -30,15 +30,15 @@ Orienté objet, Asynchrone et monothread
    - Array (tableaux), en JSON (i.e : ["valeur", "valeur"] ) ce sont des types "itérables"
    - Math (arithmetique et raccourcis genre pi)
    - Les objets incluent des methodes par défaut en fonction de leur type, i.e String.replaceAll(), String.toUpperCAse()
-   - Certaines de ces methodes ne sont pas accessible depuis une instance de Classe, seulement depuis le Core Object, i.e Math.pi
+   - Certaines de ces methodes ne sont pas accessible depuis une instance de Classe, seulement depuis le Core Object, i.e Math.PI qui est une constante
 - **Boucles et conditionnel**
-    - if/else (si(\<condition>){ fait ci } sinon {fait ca})
+    - if/else ( si ( \<condition> est vraie ){ fait ci } sinon { fait ca })
     - switch/case (cas rigolo, a vous de trouver)
-    - for(let i=0; i < 50; i++){} (initialisation ; tant que \<condition>; fait ca automatiquement en fin de chaque passage){fait ca lors d'un passage}
-    - while...do (tant que \<condition> est vraie ... execute machin)
-    - do...while (execute machin ... tant que \<condition> est vraie)
-    - for...of  for (let valeurs in monTableau){}(enumere les valeurs des propriétes d'un type itérable coomme les Arrays/tableaux)
-    - for...in  for (let clefs of monObjet){} (enumere les clefs de propriétes de l'Object)
+    - while *while( i<10 ){ }* (tant que \<condition> est vraie ... fait ca a chacun des passages)
+    - do...while  *do{ }while( i<10 )* ( fait ca ... et si \<condition> est vraie tu recommences )
+    - for *for(let i=0; i < 50; i++){}* ( état de départ ; tant que \<condition> est vraie ; fait ca automatiquement en fin de chaque passage ) { fait ca a chacun des passages }
+    - for...of  *for (let valeurs in monTableau){}* (enumere les valeurs des propriétes d'un type itérable coomme les Arrays/tableaux)
+    - for...in  *for (let clefs of monObjet){}* (enumere les clefs de propriétes de l'Object)
 - **Variables : const/let et pourquoi on utilise plus var (spoiler : c'est parce que c'est dla merde)**
     - contrairement a 'var', const et let ont des portées plus facilement identifiables
     - var : porté de fonction, il existe dans toute la fonction envellopante
@@ -46,19 +46,20 @@ Orienté objet, Asynchrone et monothread
     - const : une constante, on ne la modifie généralement pas, c'est un referentiel dans la portée
         ```javascript
         function maFonction(){
-            // la maVar existe mais est null
-            // la monLet existe pas
+            // la maVar existe mais est null, c'est dla merde
+            // la monLet existe pas et c'est bien
             for (maVar i = 0; i < 2 ; i++){
                 let monLet = i;
                 // la maVar existe et c'est normal
                 // la monLet existe et c'est normal
             }
             for (monLet j = 0; j < 2 ; j++){
+                  // la maVar existe et c'est dla merde, c'est celui de la boucle d'avant 
                 let maVar = j;
-                // la maVar existe et c'est dla merde
+                // la maVar existe et c'est dla merde, dla merde parce que l'interpreteur nous dit pas qu'il existe deja et il nous laisse le redéclarer. 
                 // la monLet existe et c'est normal
             }
-            // la maVar existe encore et c'est dla merde
+            // la maVar existe encore et c'est dla merde, surtout qu'on sait pas si c'est le maVar de la première ou de la deuxièeme boucle
             // la monLet existe pas et c'est normal
         }
         ```
