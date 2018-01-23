@@ -44,7 +44,7 @@ Orienté objet, Asynchrone et monothread
     - var : porté de fonction, il existe dans toute la fonction envellopante
     - let : portée de bloc d'execution, il existe dans les plus proches accolades qui l'entourent. 
     - const : une constante, on ne la modifie généralement pas, c'est un referentiel dans la portée
-        ```
+        ```javascript
         function maFonction(){
             // la maVar existe mais est null
             // la monLet existe pas
@@ -71,7 +71,7 @@ très simple elle se base sur la declaration de clefs/nom de propriétés et de 
 - Le nom de la propriété est une chaine daractère donc s'ecrit entre quotes/guillemets simples ou doublequotes/guillemets doubles 
 #### Object 
 Pour un Object, il s'ecrit entre accolades {}:
-    ```
+    ```javascript
     {
         "propriété1" : "valeur1",
         "propriété2" : "valeur2"
@@ -82,7 +82,7 @@ Pour un Array/tableau, il s'ecrit entre crochets []:
 - Un Array/tableau est un object de type 'itérable'/'enumerable', on peut parcourir ses valeurs au travers d'un boucle
 - C'est un 'chainage' de valeurs, tout comme une String est un chainage de caractères
 - a noter que l'on ne met pas de clef sur un tableau, c'est inutile car la notion de tableau et d'index (position dans le tableau) se fait automatiquement
-    ```
+    ```javascript
     [
         "valeur1",
         "valeur2"
@@ -90,7 +90,7 @@ Pour un Array/tableau, il s'ecrit entre crochets []:
     ```
 
 Pour un Array/tableau d'objets
-    ```
+    ```javascript
     [
         {
             "propriété1" : "valeur1",
@@ -108,21 +108,21 @@ Une function est un bloc d'execution qui retourne ou pas une valeur
 Elle beneficie d'une portée particulière et d'un accès a des elements automatique, par exemple 'this' qui indique l'Object actuel d'ou la fonction a été *invoquée*.
 
 la syntaxe :
-    ```
+    ```javascript
     function maFonction(argument){
         return argument*2;
     }
     ```
 
 - Une function est un object et peut aussi s'ecrire :
-    ```
+    ```javascript
     let maFonction = function(argument){
         return argument*2;
     }
     ```
 
 - si la function est une propriété d'un object on l'appelle Method/méthode et on la défini comme n'importe quelle autre propriété
-    ```
+    ```javascript
     {
         "propriété1" : "valeur1",
         "maMethode" : function(argument){
@@ -133,7 +133,7 @@ la syntaxe :
     ```
 
 - La notation est plus permissive dans le code JS lui même, elle ne necessite pas de declarer explicitement la clef en tant que chaine de caractères, c'est fait implicitement
-    ```
+    ```javascript
     let monObjet = {
         propriete1 : "valeur1",
         propriete2 : "valeur2"
@@ -141,20 +141,20 @@ la syntaxe :
     ```
 
 - On accède au propriétés d'un objet au travers de deux syntaxes
-    ```
+    ```javascript
     monObjet['propriété1']
     ```
     ou
-    ```
+    ```javascript
     monObjet.propriété
     ```
 
 - On invoque une methode d'objet au travers de la meme syntaxe suivie de parentheses contenant les arguments
-    ```
+    ```javascript
     monObjet['maMethode'](argument)
     ```
     ou
-    ```
+    ```javascript
     monObjet.maMethode(argument)
     ```
 
@@ -163,19 +163,19 @@ la syntaxe :
 - syntaxe plus compacte
 - transmission du 'this' de la portée/scope appellant, permet d'eviter de faire 'let that = this;' pour transmettre le this de la portée actuelle.
 - return implicite, idéal pour le chainage
-    ```
+    ```javascript
     function maFonction(argument){
         return argument*2;
     }
     ```
     peut ainsi s'ecrire (déclaration avec accolades, return explicite):
-    ```
+    ```javascript
     let maFonction = argument => {
         return argument*2;
     }
     ```
     voire, (affectation sans accolades, return implicite)
-    ```
+    ```javascript
     let maFonction = argument => argument*2;
     ```
 
@@ -192,7 +192,7 @@ la syntaxe :
 
 #### map
 applique une fonction a chaque element du tableau et retourne un tableau
-```
+```javascript
 let monTableau = [1, 2, 3]; 
 let monNouveauTableau = monTableau.map(valeur => valeur*2);
 // monNouveauTableau est égal a [2, 4, 6]
@@ -224,7 +224,7 @@ Une des fonctionnalités les plus emblématiques du JS est lié au chainage ains
 - Pour pouvoir declarer une promesse, ben on utilise un Object Promise ... c'est la declaration d'une opération asynchrone. 
 
 Une Promesse encapsule une function et lui propose 2 possibilité de retour, une dans la cas ou c'est ok, l'autre quand ca l'est pas : resolve et reject
-```
+```javascript
 let maPromesse = new Promise(function(resolve, reject) {
     let random = Math.random();
     if(random >= 0.5){
@@ -237,7 +237,7 @@ let maPromesse = new Promise(function(resolve, reject) {
 
 Pour traiter ces retours on utilise un chainage avec '.then()' et '.catch()'
 
-```
+```javascript
 let maPromesse = new Promise(function(resolve, reject) {
     let random = Math.random();
     if(random >= 0.5){
