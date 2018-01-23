@@ -71,25 +71,25 @@ très simple elle se base sur la declaration de clefs/nom de propriétés et de 
 - Le nom de la propriété est une chaine daractère donc s'ecrit entre quotes/guillemets simples ou doublequotes/guillemets doubles 
 #### Object 
 Pour un Object, il s'ecrit entre accolades {}:
-    ```javascript
-    {
-        "propriété1" : "valeur1",
-        "propriété2" : "valeur2"
-    }
-    ```
+```json
+{
+    "propriété1" : "valeur1",
+    "propriété2" : "valeur2"
+}
+```
 #### Array/Tableau (et Iterables/Enumerables)
 Pour un Array/tableau, il s'ecrit entre crochets []:
 - Un Array/tableau est un object de type 'itérable'/'enumerable', on peut parcourir ses valeurs au travers d'un boucle
 - C'est un 'chainage' de valeurs, tout comme une String est un chainage de caractères
 - a noter que l'on ne met pas de clef sur un tableau, c'est inutile car la notion de tableau et d'index (position dans le tableau) se fait automatiquement
-    ```javascript
+    ```json
     [
         "valeur1",
         "valeur2"
     ]
     ```
 
-Pour un Array/tableau d'objets
+- Pour un Array/tableau d'objets
     ```javascript
     [
         {
@@ -101,6 +101,14 @@ Pour un Array/tableau d'objets
             "propriété2" : "valeur2"
         }
     ]
+    ```
+
+- La notation est plus permissive dans le code JS lui même, elle ne necessite pas de declarer explicitement la clef en tant que chaine de caractères, c'est fait implicitement
+    ```javascript
+    let monObjet = {
+        propriete1 : "valeur1",
+        propriete2 : "valeur2"
+    }
     ```
 
 #### Function / méthodes
@@ -123,7 +131,7 @@ la syntaxe :
 
 - si la function est une propriété d'un object on l'appelle Method/méthode et on la défini comme n'importe quelle autre propriété
     ```javascript
-    {
+    let monObjet = {
         "propriété1" : "valeur1",
         "maMethode" : function(argument){
             let resultat = argument*2
@@ -132,13 +140,6 @@ la syntaxe :
     }
     ```
 
-- La notation est plus permissive dans le code JS lui même, elle ne necessite pas de declarer explicitement la clef en tant que chaine de caractères, c'est fait implicitement
-    ```javascript
-    let monObjet = {
-        propriete1 : "valeur1",
-        propriete2 : "valeur2"
-    }
-    ```
 
 - On accède au propriétés d'un objet au travers de deux syntaxes
     ```javascript
