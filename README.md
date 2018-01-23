@@ -1,14 +1,14 @@
 # B3 2018 js
 
-## tooling
+### tooling
 - Chrome + plugin chrome (jetbrain IDE extension)
 - la console de chrome / l'inspecteur
 - Phpstorm
     - Setting > Languages > JS > [ECMASCRIPT 6 | v ] 
     - Settings > Keymap > Configurer les raccourcis pour "line comment" et "block comment"
 
-## JAVASCRIPT
-ECMASCRIPT passé par la cellule marketing
+
+### ES6 / JAVASCRIPT
 
 Orienté objet, Asynchrone et monothread
 - Primitives :
@@ -16,7 +16,8 @@ Orienté objet, Asynchrone et monothread
    - numbers
    - string (chaine de caractères)
 - Opérateurs
-   - +, -, *, %,...
+   - +, -, *, %, <let>++, <let>-- ...
+   - + est aussi l'opérateur de concaténation de chaine de caractères
    - = (assignation), peut etre couplé a des opérateurs (i.e : += )
    - == egalité faible (valeur egale APRES conversion)
    - === egalité stricte (meme type, meme valeur, meme objet)
@@ -29,32 +30,38 @@ Orienté objet, Asynchrone et monothread
    - Les objets incluent des methodes par défaut en fonction de leur type, i.e String.replaceAll(), String.toUpperCAse()
    - Certaines de ces methodes ne sont pas accessible depuis une instance de Classe, seulement depuis le Core Object, i.e Math.pi
 - Boucles et conditionnel
-    - if/else
-    - switch/case
-    - for
-    - while...do
-    - do...while
-## ES6
-sorti en 2015, on l'appelle aussi ES2015 parce que lol
-const/let vs var
+    - if/else (si(<condition>){ fait ci } sinon {fait ca})
+    - switch/case (cas rigolo, a vous de trouver)
+    - for(let i=0; i < 50; i++){} (initialisation ; tant que <condition>; fait ca automatiquement en fin de chaque passage){fait ca lors d'un passage}
+    - while...do (tant que <condition> est vraie ... execute machin)
+    - do...while (execute machin ... tant que <condition> est vraie)
+- const/let
 
 ### Structures Object et JSON
 Pour déclarer un objet en JS il existe une syntaxe particulière, la JavaScript Object Notation (JSON)
 très simple elle se base sur la declaration de clefs/nom de propriétés et de valeurs
-Pour un Object, il s'ecrit :
+- Couple clef/valeur pour une propriété, (sauf dans le cas d'un tableau ou la clef est implicite)
+- Chaque propriété est separée par une virgule
+- Le nom de la propriété est une chaine daractère donc s'ecrit entre quotes/guillemets simples ou doublequotes/guillemets doubles 
+#### Object 
+Pour un Object, il s'ecrit entre accolades {}:
 ```
 {
     "propriété1" : "valeur1",
     "propriété2" : "valeur2"
 }
 ```
-Pour un Array/tableau, il s'ecrit :
+#### Array
+Pour un Array/tableau, il s'ecrit entre crochets []:
+- Un Array/tableau est un object !
+- a noter que l'on ne met pas de clef sur un tableau, c'est inutile car la notion de tableau et d'index (position dans le tableau) se fait automatiquement
 ```
 [
     "valeur1",
     "valeur2"
 ]
 ```
+
 Pour un Array/tableau d'objets
 ```
 [
@@ -69,21 +76,9 @@ Pour un Array/tableau d'objets
 ]
 ```
 
-On accèdes au propriétés/methodes d'un objet au travers de deux syntaxes
-```
-monObjet['propriété']
-monObjet['methode']()
-```
-ou
-```
-monObjet.propriété
-monObjet.methode()
-```
-
-
-Un Array/tableau est un object !
-
-Une methode est un object !
+#### Function / méthodes
+Une function est un bloc d'execution qui retourne ou pas une valeur 
+Elle beneficie d'une portée particulière et d'un accès a des elements automatique, par exemple 'this' qui indique l'Object actuel d'ou la fonction a été *invoquée*.
 
 la syntaxe :
 ```javascript
@@ -91,13 +86,51 @@ function maFonction(argument){
     return argument*2;
 }
 ```
-peut aussi s'ecrire :
+
+- Une function est un object et peut aussi s'ecrire :
 ```javascript
 let maFonction = function(argument){
     return argument*2;
 }
 ```
 
+- si la function est une propriété d'un object on l'appelle Method/méthode et on la défini comme n'importe quelle autre propriété
+```
+{
+    "propriété1" : "valeur1",
+    "maMethode" : function(argument){
+        let resultat = argument*2
+        return resultat;
+    }
+}
+```
+
+La notation est plus permissive dans le code JS lui même, elle ne necessite pas de declarer explicitement la clef en tant que chaine de caractères, c'est fait implicitement
+```
+let monObjet = {
+    propriete1 : "valeur1",
+    propriete2 : "valeur2"
+}
+```
+
+
+On accède au propriétés d'un objet au travers de deux syntaxes
+```
+monObjet['propriété1']
+```
+ou
+```
+monObjet.propriété
+```
+
+On invoque une methode d'objet au travers de la meme syntaxe suivie de parentheses contenant les arguments
+```
+monObjet['maMethode'](argument)
+```
+ou
+```
+monObjet.maMethode(argument)
+```
 
 
 
