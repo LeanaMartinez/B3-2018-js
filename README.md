@@ -1,14 +1,15 @@
 # B3 2018 js
 
-### tooling
-- Chrome + plugin chrome (jetbrain IDE extension)
-- la console de chrome / l'inspecteur
+### 1. tooling
+- Chrome + plugin jetbrain IDE extension
+    - la console de chrome / l'inspecteur
+    - le debugguer de PhpStorm
 - Phpstorm
     - Setting > Languages > JS > [ECMASCRIPT 6 | v ] 
     - Settings > Keymap > Configurer les raccourcis pour "line comment" et "block comment"
 
 
-### ES6 / JAVASCRIPT
+### 2. ES6 / JAVASCRIPT
 
 Orienté objet, Asynchrone et monothread
 - **Primitives**
@@ -17,7 +18,7 @@ Orienté objet, Asynchrone et monothread
    - string (chaine de caractères)
    - null : existe mais on sait pas ce que c'est
    - undefined : n'existe pas/ n'est pas déclaré dans la portée actuelle
-- **Opérateurs**
+- **Opérateurs** 
    - +, -, *, %, <let>++, <let>-- ...
    - '+' est aussi l'opérateur de concaténation de chaine de caractères
    - = (assignation), peut etre couplé a des opérateurs (i.e : += )
@@ -25,12 +26,11 @@ Orienté objet, Asynchrone et monothread
    - === egalité stricte (meme type, meme valeur, meme objet)
    - les opérateurs d'egalité ansi que les boolean peuvent se voir attrbuer un 'non' ou 'inverse' de la forme !=, !==, !=== ou !true, ![variable boolean]
    - inégalité ou égalité partielle, <, >, <=, >=  
-- **Core Objects**
+- **Objects Natifs**
    - Object, decrits en JSON (i.e : {"clef" : "valeur"} )
    - Array (tableaux), en JSON (i.e : ["valeur", "valeur"] ) ce sont des types "itérables"
-   - Math (arithmetique et raccourcis genre pi)
-   - Les objets incluent des methodes par défaut en fonction de leur type, i.e String.replaceAll(), String.toUpperCAse()
-   - Certaines de ces methodes ne sont pas accessible depuis une instance de Classe, seulement depuis le Core Object, i.e Math.PI qui est une constante
+   - Les objets incluent des methodes par défaut en fonction de leur type, i.e String.replaceAll(), String.toUpperCase()
+   - Certains Objects/Classes ne peuvent pas etre *instanciés*, c-a-d que pour utiliser les methodes on ne peut créer de nouvel objet basé sur la définition. i.e pour utiliser Math on ne peut pas faire let monMath = new Math(),  on utilise directement Math.PI qui est une constante ou Math.sin() qui est une fonction 
 - **Boucles et conditionnel**
     - if/else ( si ( \<condition> est vraie ){ fait ci } sinon { fait ca })
     - switch/case (cas rigolo, a vous de trouver)
@@ -44,33 +44,33 @@ Orienté objet, Asynchrone et monothread
     - var : porté de fonction, il existe dans toute la fonction envellopante
     - let : portée de bloc d'execution, il existe dans les plus proches accolades qui l'entourent. 
     - const : une constante, on ne la modifie généralement pas, c'est un referentiel dans la portée
-        ```javascript
-        function maFonction(){
-            // la maVar existe mais est null, c'est dla merde
-            // la monLet existe pas et c'est bien
-            for (maVar i = 0; i < 2 ; i++){
-                let monLet = i;
-                // la maVar existe et c'est normal
-                // la monLet existe et c'est normal
-            }
-            for (monLet j = 0; j < 2 ; j++){
-                  // la maVar existe et c'est dla merde, c'est celui de la boucle d'avant 
-                let maVar = j;
-                // la maVar existe et c'est dla merde, dla merde parce que l'interpreteur nous dit pas qu'il existe deja et il nous laisse le redéclarer. 
-                // la monLet existe et c'est normal
-            }
-            // la maVar existe encore et c'est dla merde, surtout qu'on sait pas si c'est le maVar de la première ou de la deuxièeme boucle
-            // la monLet existe pas et c'est normal
+    ```javascript
+    function maFonction(){
+        // la maVar existe mais est null, c'est dla merde
+        // la monLet existe pas et c'est bien
+        for (maVar i = 0; i < 2 ; i++){
+            let monLet = i;
+            // la maVar existe et c'est normal
+            // la monLet existe et c'est normal
         }
-        ```
+        for (monLet j = 0; j < 2 ; j++){
+              // la maVar existe et c'est dla merde, c'est celui de la boucle d'avant 
+            let maVar = j;
+            // la maVar existe et c'est dla merde, dla merde parce que l'interpreteur nous dit pas qu'il existe deja et il nous laisse le redéclarer. 
+            // la monLet existe et c'est normal
+        }
+        // la maVar existe encore et c'est dla merde, surtout qu'on sait pas si c'est le maVar de la première ou de la deuxièeme boucle
+        // la monLet existe pas et c'est normal
+    }
+    ```
 
-### Structures Object et JSON
+### 3. Structures Object et JSON
 Pour déclarer un objet en JS il existe une syntaxe particulière, la JavaScript Object Notation (JSON)
 très simple elle se base sur la declaration de clefs/nom de propriétés et de valeurs
 - Couple clef/valeur pour une propriété, (sauf dans le cas d'un tableau ou la clef est implicite)
 - Chaque propriété est separée par une virgule
 - Le nom de la propriété est une chaine daractère donc s'ecrit entre quotes/guillemets simples ou doublequotes/guillemets doubles 
-#### Object 
+#### 3.1. Object 
 Pour un Object, il s'ecrit entre accolades {}:
 ```json
 {
@@ -78,7 +78,10 @@ Pour un Object, il s'ecrit entre accolades {}:
     "propriété2" : "valeur2"
 }
 ```
-#### Array/Tableau (et Iterables/Enumerables)
+
+**TODO : setters/getters, namespace, constructor/destructor => static/private/protected/public**
+
+#### 3.2. Array/Tableau (et Iterables/Enumerables)
 Pour un Array/tableau, il s'ecrit entre crochets []:
 - Un Array/tableau est un object de type 'itérable'/'enumerable', on peut parcourir ses valeurs au travers d'un boucle
 - C'est un 'chainage' de valeurs, tout comme une String est un chainage de caractères
@@ -90,7 +93,7 @@ Pour un Array/tableau, il s'ecrit entre crochets []:
     ]
     ```
 
-- Pour un Array/tableau d'objets
+- Pour un Array/tableau d'objets, ben c'est des objets dans le tableau
     ```javascript
     [
         {
@@ -103,20 +106,21 @@ Pour un Array/tableau, il s'ecrit entre crochets []:
         }
     ]
     ```
+    
+#### 3.3. JSON vs code Javascript
+La notation est plus permissive dans le code JS lui même, elle ne necessite pas de declarer explicitement la clef en tant que chaine de caractères, c'est fait implicitement
+```javascript
+let monObjet = {
+    propriete1 : "valeur1",
+    propriete2 : "valeur2"
+}
+```
 
-- La notation est plus permissive dans le code JS lui même, elle ne necessite pas de declarer explicitement la clef en tant que chaine de caractères, c'est fait implicitement
-    ```javascript
-    let monObjet = {
-        propriete1 : "valeur1",
-        propriete2 : "valeur2"
-    }
-    ```
-
-#### Function / méthodes
-Une function est un bloc d'execution qui retourne ou pas une valeur 
+#### 3.4. Function / méthodes
+Une function est une ensemble de blocs d'execution qui retourne ou pas une valeur 
 Elle beneficie d'une portée particulière et d'un accès a des elements automatique, par exemple 'this' qui indique l'Object actuel d'ou la fonction a été *invoquée*.
 
-la syntaxe :
+- Syntaxe :
     ```javascript
     function maFonction(argument){
         return argument*2;
@@ -161,7 +165,7 @@ la syntaxe :
     ```
 
 
-### Fonction fléchée
+### 4. Fonction fléchée
 - syntaxe plus compacte
 - transmission du 'this' de la portée/scope appellant, permet d'eviter de faire 'let that = this;' pour transmettre le this de la portée actuelle.
 - return implicite, idéal pour le chainage
@@ -190,23 +194,23 @@ la syntaxe :
     let maFonction = () => 2; // la on retourne juste 2 car on ne peut traiter l'argument inexistant
     ```
 
-### Array Map/Reduce/Filter
+### 5. Array Map/Reduce/Filter
 
-#### map
+#### 5.1 map
 applique une fonction a chaque element du tableau et retourne un tableau
 ```javascript
 let monTableau = [1, 2, 3]; 
 let monNouveauTableau = monTableau.map(valeur => valeur*2);
 // monNouveauTableau est égal a [2, 4, 6]
 ```
-#### reduce
+#### 5.2. reduce
 applique une fonction a chaque element du tableau et retourne l'ACCUMULATEUR fourni en argument, ce dernier gardant le résultat de la dernière opération
  ```javascript
  let monTableau = [1, 2, 3]; 
  let resultatAccumulateur = monTableau.reduce((valeur, monAccumulateur ) => valeur + monAccumulateur );
  // resultatAccumulateur est égal a 6 , soit 1+2+3
  ```
-#### filter
+#### 5.3. filter
 applique une fonction qui teste une condition a chaque element du tableau et retourne un tableau des entrées ou la \<condition> est vraie 
  ```javascript
  let monTableau = [1, 2, 3]; 
@@ -220,7 +224,7 @@ applique une fonction qui teste une condition a chaque element du tableau et ret
   // monTableauFiltré est égal a [2]
   ```
 
-### Chains et Promises
+### 6. Chains et Promises
 Une des fonctionnalités les plus emblématiques du JS est lié au chainage ainsi qu'e la manipulation de structures via des promesses.
 - Pour pouvoir chainer, ben faut retourner un truc. Ca tombe bien les fonctions fléchées elles le supportent par defaut
 - Pour pouvoir declarer une promesse, ben on utilise un Object Promise ... c'est la declaration d'une opération asynchrone. 
