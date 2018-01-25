@@ -24,7 +24,7 @@ Orienté objet, Asynchrone et monothread
    - = (assignation), peut etre couplé a des opérateurs (i.e : += )
    - == egalité faible (valeur egale APRES conversion)
    - === egalité stricte (meme type, meme valeur, meme objet)
-   - les opérateurs d'egalité ansi que les boolean peuvent se voir attrbuer un 'non' ou 'inverse' de la forme !=, !==, !=== ou !true, ![variable boolean]
+   - les opérateurs d'egalité ansi que les boolean peuvent se voir attrbuer un 'non' ou 'inverse' de la forme !=, !== ou !true, ![variable boolean]
    - inégalité ou égalité partielle, <, >, <=, >=  
 - **Objects Natifs**
    - Object, decrits en JSON (i.e : {"clef" : "valeur"} )
@@ -37,8 +37,8 @@ Orienté objet, Asynchrone et monothread
     - while *while( i<10 ){ }* (tant que \<condition> est vraie ... fait ca a chacun des passages)
     - do...while  *do{ }while( i<10 )* ( fait ca ... et si \<condition> est vraie tu recommences )
     - for *for(let i=0; i < 50; i++){}* ( état de départ ; tant que \<condition> est vraie ; fait ca automatiquement en fin de chaque passage ) { fait ca a chacun des passages }
-    - for...of  *for (let valeurs in monTableau){}* (enumere les valeurs des propriétes d'un type itérable coomme les Arrays/tableaux)
-    - for...in  *for (let clefs of monObjet){}* (enumere les clefs de propriétes de l'Object)
+    - for...of  *for (let valeurs of monTableau){}* (enumere les valeurs des propriétes d'un type itérable coomme les Arrays/tableaux)
+    - for...in  *for (let clefs in monObjet){}* (enumere les clefs de propriétes de l'Object)
 - **Variables : const/let et pourquoi on utilise plus var (spoiler : c'est parce que c'est dla merde)**
     - contrairement a 'var', const et let ont des portées plus facilement identifiables
     - var : porté de fonction, il existe dans toute la fonction envellopante
@@ -48,14 +48,14 @@ Orienté objet, Asynchrone et monothread
     function maFonction(){
         // la maVar existe mais est null, c'est dla merde
         // la monLet existe pas et c'est bien
-        for (maVar i = 0; i < 2 ; i++){
-            let monLet = i;
+        for (var maVar = 0; maVar < 2 ; maVar++){
+            let monLet = maVar;
             // la maVar existe et c'est normal
             // la monLet existe et c'est normal
         }
-        for (monLet j = 0; j < 2 ; j++){
+        for (let monLet = 0; monLet < 2 ; monLet++){
               // la maVar existe et c'est dla merde, c'est celui de la boucle d'avant 
-            let maVar = j;
+            let maVar = monLet;
             // la maVar existe et c'est dla merde, dla merde parce que l'interpreteur nous dit pas qu'il existe deja et il nous laisse le redéclarer. 
             // la monLet existe et c'est normal
         }
